@@ -1,8 +1,7 @@
 import { makeStyles } from '@mui/styles';
 
-const useStyles = makeStyles({
+export default makeStyles((theme) => ({
   root: {
-    display: 'flex',
     height: '100%',
   },
   toolbar: {
@@ -10,7 +9,12 @@ const useStyles = makeStyles({
   },
   content: {
     flexGrow: 1,
-    padding: '2em',
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '2em',
+    },
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: '17em',
+    },
   },
-});
-export default useStyles;
+}));
