@@ -24,7 +24,7 @@ function SideBar({ setMobileOpen }) {
     const dispatch = useDispatch();
     const classes = useStyles();
     const theme = useTheme();
-    console.log(genreIdOrCategoryName + " movies");
+    // console.log(genreIdOrCategoryName + " movies");
     return (
         <>
             <Link to="/" className={classes.imageLink}>
@@ -53,8 +53,8 @@ function SideBar({ setMobileOpen }) {
                     isFetching ?
                         (<Box sx={{ display: "flex", justifyContent: "center" }}>
                             <CircularProgress width={50} />
-                        </Box>) :
-                        (data.genres.map(({ name, id }) => (
+                        </Box>
+                        ) : (data.genres.map(({ name, id }) => (
                             <Link key={name} className={classes.links} to="/" >
                                 <ListItem onClick={() => { dispatch(selectGenreOrCategory(id)) }}>
                                     <ListItemIcon>
