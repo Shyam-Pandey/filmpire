@@ -14,8 +14,8 @@ const Search = () => {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            console.log("Movies" + query)
-            console.log(searchMovieByTitle())
+            // console.log("Movies" + query)
+            // console.log(searchMovieByTitle())
             dispatch(searchMovieByTitle(query));
             //dispatch(searchMovieByTitle(query));
         }

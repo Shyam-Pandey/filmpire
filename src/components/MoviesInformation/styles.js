@@ -4,7 +4,7 @@ export default makeStyles((theme) => ({
     containerSpaceAround: {
         display: 'flex',
         justifyContent: 'space-around',
-        margin: '10px 0 !important',
+        margin: '5px 0 !important',
         [theme.breakpoints.down('sm')]: {
             flexWrap: 'wrap',
             flexDirection: "column",
@@ -39,13 +39,48 @@ export default makeStyles((theme) => ({
         justifyContent: 'space-around'
     },
     castImage: {
-        width: '100%',
-        height: '8em',
+        width: '80%',
+        maxWidth: '7em',
+        objectFit: 'cover',
+        height: '7em',
+        borderRadius: '10px'
     },
     topCast: {
-        textDecoration: 'none'
+        textDecoration: 'none',
+        marginTop: '10px'
     },
     characterNames: {
         fontSize: '1rem',
+    },
+    buttonContainers: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+        }
+    },
+    modal: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    box: {
+        width: '50%',
+        height: '50%',
+
+        [theme.breakpoints.down('sm')]: {
+            width: "100%",
+            height: "100%",
+            marginLeft: '35px',
+        }
+    },
+    video: {
+        width: '100%',
+        height: '100%',
+        [theme.breakpoints.down('sm')]: {
+            width: "90%",
+            height: "90%"
+        }
     }
 }))
