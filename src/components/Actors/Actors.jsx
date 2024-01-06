@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box, Button } from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
 
 import Movielist from '../Movielist/Movielist'
 import { useGetActorQuery, useGetMoviesByCharacterQuery } from '../../services/TMDB'
 import useStyles from "./styles"
-import { ArrowBack } from '@mui/icons-material';
-import Button from "@mui/material/Button";
+import Pagination from '../Pagination/Pagination';
+
+
 
 
 function Actors() {
   const { id } = useParams();
   const navigate = useNavigate()
   const { data, isFetching, error } = useGetActorQuery(id);
-  const page = 1;
+  const [page, setPage] = useState(1);
   const { data: movies } = useGetMoviesByCharacterQuery({ id, page })
   const classes = useStyles();
   console.log(data)
@@ -51,41 +53,10 @@ function Actors() {
         {movies ?
           <Movielist movies={movies} numberOf={12} /> :
           (<Box>Sorry nothing found</Box>)}
+        <Pagination currentPage={page} setPage={setPage} totalPages={movies?.total_pages} />
       </Box>
+
     </>
   );
 }
-
-
-// return (
-//   <>
-//     <Grid container spacing={3}>
-//       <Grid item lg={5} xl={4}>
-//         <img
-//           className={classes.image}
-//           src={`https://image.tmdb.org/t/p/w780/${data?.profile_path}`}
-//           alt={data?.name}
-//         />
-//       </Grid>
-//       <Grid item lg={7} xl={8} style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-//         <Typography variant="h2" gutterBottom>{data?.name}</Typography>
-//         <Typography variant="h5" gutterBottom>Born: {new Date(data?.birthday).toDateString()}</Typography>
-//         <Typography variant="body1" align="justify" paragraph>{data?.biography || 'Sorry, no biography yet...'}</Typography>
-//         <Box marginTop="2rem" display="flex" justifyContent="space-around">
-//           <Button variant="contained" color="primary" target="_blank" href={`https://www.imdb.com/name/${data?.imdb_id}`}>IMDB</Button>
-//           <Button startIcon={<ArrowBack />} onClick={() => history.goBack()} color="primary">Back</Button>
-//         </Box>
-//       </Grid>
-
-//     </Grid>
-//     <Box margin="2rem" width="100%">
-//       <Typography variant="h2" align="center" gutterBottom>Movies</Typography>
-//       {movies
-//         ? <Movielist movies={movies} numberOfMovies={12} />
-//         : <Box>Sorry, nothing is found.</Box>
-//       }
-//     </Box>
-//   </>
-//   );
-// };
 export default Actors;

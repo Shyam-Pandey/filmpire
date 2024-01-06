@@ -1,6 +1,5 @@
 import React from 'react'
 import { Typography, Button } from '@mui/material'
-
 import useStyles from './styles';
 
 const Pagination = ({ currentPage, totalPages, setPage }) => {
@@ -21,9 +20,9 @@ const Pagination = ({ currentPage, totalPages, setPage }) => {
     if (totalPages === 0) return null;
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Button className={classes.button} onClick={handlePrev} variants="contained" color="primary" type="button" >Prev</Button>
+            <Button className={classes.button} onClick={handlePrev} variant="contained" color="primary" type="button" >Prev</Button>
             <Typography className={classes.pageNumber} >{currentPage}</Typography>
-            <Button className={classes.button} onClick={handleNext} variants="contained" color="primary" type="button" >Next</Button>
+            <Button className={classes.button} onClick={handleNext} variant="contained" color="primary" type="button" >Next</Button>
         </div>
     )
 }
